@@ -1,0 +1,19 @@
+.navbar {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 20px;
+  }
+  .sidebar {
+    width: "100px";
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-top: 100px;
+  }
+  .icons {
+    width: "100px";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
