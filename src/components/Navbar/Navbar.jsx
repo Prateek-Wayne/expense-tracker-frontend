@@ -9,7 +9,7 @@ import {
     Toolbar,
     Typography,
   } from "@mui/material";
-  import React, { useState } from "react";
+  import React, {  useState } from "react";
   import "./Navbar.css";
   import MenuIcon from "@mui/icons-material/Menu";
   import InsertChartOutlinedIcon from '@mui/icons-material/InsertChartOutlined';
@@ -18,9 +18,15 @@ import {
   import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
   import TrendingDownRoundedIcon from '@mui/icons-material/TrendingDownRounded';
   import { Link } from "react-router-dom";
+  import { useCookies } from "react-cookie";
   import Jetha from '../../images/userJetha.jpeg'
   const NavBar = () => {
     const [open, setOpen] = useState(false);
+    const [cookie,setCookie] = useCookies(['token']);
+    const handleLogout=()=>{
+      console.log("Logout Called")
+      setCookie("token",null);
+    }
 
     return (
       <div className="navbar">
@@ -40,9 +46,11 @@ import {
               Expense -Tracker
             </Typography>
             <Typography variant="body1">Made with ⚡ by Prateek Verma</Typography>
-            <Button color="secondary" variant="contained" sx={{margin:"5px"}} href="/login">Login</Button>
+            {(cookie?.token)?
+            <Button color="secondary" variant="contained" sx={{margin:"5px"}} onClick={handleLogout} >Logout</Button>
+            :<Button color="secondary" variant="contained" sx={{margin:"5px"}} href="/login">Login</Button>
+            }
           </Toolbar>
-         {/* <Login loginFlag={loginFlag} handleLoginFlag={handleLoginFlag}/> */}
        
         </AppBar>
         <Drawer anchor={"left"} open={open} onClose={() => setOpen(false)}>

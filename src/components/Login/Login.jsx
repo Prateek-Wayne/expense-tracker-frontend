@@ -3,28 +3,51 @@ import React from 'react'
 import './Login.css'
 import { useLoginMutation } from "../../services/loginAPI";
 import { useCookies } from "react-cookie";
-
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
+    const navigate = useNavigate();
     const [login,{ isLoading,isSuccess, isError, data, error }] = useLoginMutation();
-    // console.log("🚀 ~ file: Login.jsx:9 ~ Login ~  isLoading,isSuccess, isError, data, error:",  isLoading,isSuccess, isError, data, error)
     const [cookie, setCookie] = useCookies(['token']);
     const handleLogin = async () => {
-        console.log('Before login:', isLoading, isSuccess, isError, data, error);
         try {
-            const { data } = await login({ email: 'local@gmaill.com', password: 'password' }); 
-            console.log('After login:', isLoading, isSuccess, isError, data, error);
-            if (isLoading) {
-                console.log('Loading...');
-            }
-            if (isSuccess) {
-                console.log('Login successful');
+            const { data } = await login({ email: 'local@gmail.com', password: 'password' }); 
+            if(data?.token)
+            {
+                setCookie("token",data?.token);
             }
         } catch (error) {
             console.error('Failed to login:', error);
         }
     };
-    console.log("After some time Error is comign as ",error);
-    
+    if(!cookie?.token)
+    {toast.warn("Please Login First",{
+        position: toast.POSITION.TOP_RIGHT,
+        toastId:'loading1'
+    })
+
+    }
+    if(isLoading)
+    {
+        toast.info("Request Send",{
+            position: toast.POSITION.TOP_RIGHT,
+            toastId:'loading1'
+        })
+    }
+    if (isSuccess) {
+        toast.success("Login successfull !", {
+            position: toast.POSITION.TOP_RIGHT,
+            toastId:'success1'
+          });
+          navigate('/');
+    }
+    if (isError) {
+        toast.error("Error  !", {
+            position: toast.POSITION.TOP_RIGHT,
+            toastId:'error1'
+          });
+    }
     return (
         <div className="login">
             <Card>
