@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import Login from './components/Login/Login'
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
-
+import Register from './components/Register/Register';
 import './App.css'
 const App = () => {
 
@@ -22,6 +22,9 @@ const App = () => {
       <NavBar/>
     <Routes>
       <Route path="/login" element={<Login/>}/>
+    </Routes>
+    <Routes>
+      <Route path="/register" element={<Register/>}/>
     </Routes>
     </div>
   )
