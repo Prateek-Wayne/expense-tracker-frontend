@@ -4,7 +4,7 @@ export const registerAPI = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: "https://expense-tracker-api-k3sr.onrender.com/api/v1" }),
     tagTypes: ['REGISTER'],
     endpoints: (builder) => ({
-        login:builder.mutation({
+        register:builder.mutation({
             query:(data)=>({
                 url:'/register',
                 method:"POST",
@@ -16,4 +16,5 @@ export const registerAPI = createApi({
     })
 });
 export const {useRegisterMutation}=registerAPI;
+
 

@@ -68,7 +68,7 @@ import {
                       <Typography style={{ margin: "10px" }}>Dashboard</Typography>
                     </Button>
                   </Link>
-                  <Link to="/">
+                  <Link to="/transaction">
                     <Button>
                       <PriceChangeOutlinedIcon />
                       <Typography style={{ margin: "10px" }}>
@@ -76,19 +76,19 @@ import {
                       </Typography>
                     </Button>
                   </Link>
-                  <Link to="/">
+                  <Link to="/income">
                     <Button>
                       <TrendingUpRoundedIcon />
                       <Typography style={{ margin: "10px" }}>Income</Typography>
                     </Button>
                   </Link>
-                  <Link to="/">
+                  <Link to="/expense">
                     <Button>
                       <TrendingDownRoundedIcon />
                       <Typography style={{ margin: "10px" }}>Expense</Typography>
                     </Button>
                   </Link>
-                  <Link to="/">
+                  <Link to="/about">
                     <Button>
                       <EngineeringOutlinedIcon />
                       <Typography style={{ margin: "10px" }}>About Me</Typography>
