@@ -1,5 +1,5 @@
 import { Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
-import React from 'react'
+import React, { useState } from 'react'
 import './Login.css'
 import { useLoginMutation } from "../../services/loginAPI";
 import { useCookies } from "react-cookie";
@@ -10,20 +10,28 @@ const Login = () => {
     const navigate = useNavigate();
     const [login,{ isLoading,isSuccess, isError, data, error }] = useLoginMutation();
     const [cookie, setCookie] = useCookies(['token']);
-    const handleLogin = async () => {
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('');
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("Submit triggered", email, password);
+        
         try {
-            const { data } = await login({ email: 'local@gmail.com', password: 'password' }); 
-            if(data?.token)
-            {
-                setCookie("token",data?.token);
+            const { data } = await login({ email, password }); 
+            if (data?.token) {
+                setCookie("token", data?.token);
             }
         } catch (error) {
             console.error('Failed to login:', error);
         }
-    };
+    
+        setEmail("");
+        setPassword("");
+    }
+    console.log("Success",isSuccess);
     if(!cookie?.token)
     {toast.warn("Please Login First",{
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.POSITION.TOP_LEFT,
         toastId:'loading1'
     })
 
@@ -32,26 +40,29 @@ const Login = () => {
     {
         toast.info("Request Send",{
             position: toast.POSITION.TOP_RIGHT,
-            toastId:'loading1'
+            toastId:'loading1',
+            autoClose:1000
         })
     }
     if (isSuccess) {
         toast.success("Login successfull !", {
             position: toast.POSITION.TOP_RIGHT,
-            toastId:'success1'
+            toastId:'success1',
+            autoClose:1000
           });
           navigate('/');
     }
     if (isError) {
-        toast.error("Error  !", {
+        toast.error("Oops Worng Email/Password  !", {
             position: toast.POSITION.TOP_RIGHT,
-            toastId:'error1'
+            toastId:'error1',
           });
     }
     return (
         <div className="login">
             <Card>
                 <CardHeader title="Login" subheader="enter login details" />
+                <form onSubmit={handleSubmit}>
                 <CardContent>
                     <div className="inputs">
                         <TextField
@@ -60,6 +71,8 @@ const Login = () => {
                             label="email"
                             variant="outlined"
                             type="input"
+                            value={email}
+                            onChange={(e)=>{setEmail(e.target.value)}}
                         />
                     </div>
                     <div className="inputs">
@@ -69,13 +82,16 @@ const Login = () => {
                             label="password"
                             variant="outlined"
                             type="password"
+                            value={password}
+                            onChange={(e)=>{setPassword(e.target.value)}}
                         />
                     </div>
                 </CardContent>
                 <CardActions>
-                    <Button variant="outlined" onClick={handleLogin} >LOGIN </Button>
+                    <Button variant="outlined" type="submit">LOGIN </Button>
                     <Button variant="outlined" href="/register">Register</Button>
                 </CardActions>
+                </form>
             </Card>
         </div>
     )

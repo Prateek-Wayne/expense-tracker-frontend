@@ -13,7 +13,7 @@ root.render(
   // <React.StrictMode>
     <Provider store={store}>
     <BrowserRouter>
-    <ToastContainer />
+    <ToastContainer autoClose={300} />
     <App />
     </BrowserRouter>
     </Provider>

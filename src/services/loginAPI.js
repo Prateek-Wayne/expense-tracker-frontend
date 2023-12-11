@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 export const loginAPI = createApi({
     reducerPath: "loginReducer",
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:7000/api/v1" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "https://expense-tracker-api-k3sr.onrender.com/api/v1" }),
     tagTypes: ['LOGIN'],
     endpoints: (builder) => ({
         login:builder.mutation({

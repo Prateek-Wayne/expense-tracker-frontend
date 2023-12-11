@@ -44,5 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:7000/api/v1"
+  "proxy": "https://expense-tracker-api-k3sr.onrender.com/api/v1"
 }
