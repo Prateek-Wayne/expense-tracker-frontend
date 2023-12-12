@@ -19,32 +19,20 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={cookie?.token ? <DashBoard /> : <Login />} />
-      </Routes>
-      <Routes>
         <Route
           path="/income"
           element={cookie?.token ? <Income /> : <Login />}
         />
-      </Routes>
-      <Routes>
         <Route
           path="/expense"
           element={cookie?.token ? <Expense /> : <Login />}
         />
-      </Routes>
-      <Routes>
         <Route
           path="/transaction"
           element={cookie?.token ? <Transaction /> : <Login />}
         />
-      </Routes>
-      <Routes>
         <Route path="/about" element={cookie?.token ? <About /> : <Login />} />
-      </Routes>
-      <Routes>
         <Route path="/register" element={<Register />} />
-      </Routes>
-      <Routes>
         <Route path="/login" element={<Login />} />
       </Routes>
     </div>

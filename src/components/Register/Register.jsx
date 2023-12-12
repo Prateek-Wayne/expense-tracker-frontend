@@ -56,7 +56,6 @@ const Register = () => {
       toastId: "error1",
     });
   }
-  console.log(error);
   return (
     <div className="login">
       <Card sx={{ backgroundColor: "rgba(195, 242, 253, 0.985)" }}>
