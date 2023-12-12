@@ -66,7 +66,7 @@ const Login = () => {
   }
   return (
     <div className="login">
-      <Card>
+      <Card sx={{ backgroundColor: "rgba(195, 242, 253, 0.985)" }}>
         <CardHeader title="Login" subheader="enter login details" />
         <form onSubmit={handleSubmit}>
           <CardContent>

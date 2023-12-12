@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Form from "../Form/Form";
 
 const Income = () => {
   return (
-    <div>Income</div>
-  )
-}
+    <div>
+      <Form heading={"INCOME 💸"} />
+    </div>
+  );
+};
 
-export default Income
+export default Income;

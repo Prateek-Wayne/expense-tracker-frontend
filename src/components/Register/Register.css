@@ -1,17 +1,15 @@
-.login{
+.login {
+  display: flex;
+  justify-content: center;
 
-    display: flex;
-    justify-content: center;
-   
-    /* width: 400px; */
+  /* width: 400px; */
 }
-.inputs{
-   
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: max-content;
-    margin:5px;
-    height: auto;
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  margin: 5px;
+  height: auto;
 }

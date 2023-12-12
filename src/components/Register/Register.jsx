@@ -50,9 +50,8 @@ const Register = () => {
       autoClose: 1000,
     });
     navigate("/login");
-  }
-  else if (isError) {
-    toast.error(`${error?.message|| error?.data?.msg}`, {
+  } else if (isError) {
+    toast.error(`${error?.message || error?.data?.msg}`, {
       position: toast.POSITION.TOP_RIGHT,
       toastId: "error1",
     });
@@ -60,7 +59,7 @@ const Register = () => {
   console.log(error);
   return (
     <div className="login">
-      <Card>
+      <Card sx={{ backgroundColor: "rgba(195, 242, 253, 0.985)" }}>
         <CardHeader title="Register" subheader="enter login details" />
         <form onSubmit={handleSubmit}>
           <CardContent>
