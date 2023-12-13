@@ -11,9 +11,13 @@ import "./Login.css";
 import { useLoginMutation } from "../../services/loginAPI";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { setToken } from "../../slices/authSlice";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
+  const dispatch=useDispatch();
   const navigate = useNavigate();
   const [login, { isLoading, isSuccess, isError, data, error }] =
     useLoginMutation();
@@ -26,7 +30,6 @@ const Login = () => {
 
     try {
       const { data2 } = await login({ email, password });
-      console.log("Inside the If Condition", data, data2, error);
     } catch (error) {
       console.error("Failed to login:", error);
     }
@@ -34,6 +37,9 @@ const Login = () => {
     setEmail("");
     setPassword("");
   };
+
+  // console.log("🚀 ~ file: Login.jsx:41 ~ Login ~ isLoading, isSuccess, isError, data, error:", isLoading, isSuccess, isError, data, error)
+  
   if (isLoading) {
     toast.info("Request Send", {
       position: toast.POSITION.TOP_RIGHT,
@@ -49,14 +55,14 @@ const Login = () => {
       autoClose: 2000
     });
   }
-  useEffect(()=>{
+  useEffect(() => {
     if (!cookie?.token) {
       toast.warn("Please Login First", {
         position: toast.POSITION.TOP_LEFT,
         toastId: "loading1",
       });
     }
-  },[])
+  }, [])
   useEffect(() => {
     if (data?.token) {
       setCookie("token", data?.token);
@@ -67,6 +73,7 @@ const Login = () => {
         toastId: "success1",
         autoClose: 2000
       });
+      dispatch(setToken({name:data?.userExist?.fullName,token:data?.token}));
       navigate("/");
     }
   }, [isSuccess, data]);

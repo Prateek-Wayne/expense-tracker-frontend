@@ -18,7 +18,14 @@ import { useCookies } from "react-cookie";
 
 const Form = ({ heading }) => {
   const [cookie] = useCookies(["token"]);
-  console.log("Cookie", cookie?.token);
+  const obj=  {
+    title: "TEsting",
+    amount: 10000,
+    type: "Freelancing",
+    date: "6/12/2023",
+    description: "None",
+  }
+  // console.log("Cookie", cookie?.token);
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("");
@@ -31,15 +38,8 @@ const Form = ({ heading }) => {
     console.log("Submit from form income");
     try {
       const { data } = await createIncome(
-        {
-          title: "TEsting",
-          amount: 10000,
-          type: "Freelancing",
-          date: "6/12/2023",
-          description: "None",
-        },
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU3MDc1ODQ0Y2M4MWZhMmE5NDYyYWFhIiwiaWF0IjoxNzAyMzA2MjUzfQ.SwH8HpA8ayL2eZZaivM3VSGJIcZ4zBmO2scxZGQnvsw",
-      );
+        obj
+        );
     } catch (error) {
       console.error("Failed to login:", error);
     }
@@ -49,9 +49,7 @@ const Form = ({ heading }) => {
     setDate("");
     setDescription("");
   };
-
-  console.log("error", error);
-  console.log("data", data);
+  console.log("🚀 ~ file: Form.jsx:41 ~ Login ~ isLoading, isSuccess, isError, data, error:", isLoading, isSuccess, isError, data, error)
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
