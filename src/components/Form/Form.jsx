@@ -15,16 +15,12 @@ import AddIcon from "@mui/icons-material/Add";
 import "./Form.css";
 import { useCreateIncomeMutation } from "../../services/incomeAPI";
 import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Form = ({ heading }) => {
   const [cookie] = useCookies(["token"]);
-  const obj=  {
-    title: "TEsting",
-    amount: 10000,
-    type: "Freelancing",
-    date: "6/12/2023",
-    description: "None",
-  }
+
   // console.log("Cookie", cookie?.token);
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
@@ -35,6 +31,13 @@ const Form = ({ heading }) => {
     useCreateIncomeMutation();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const obj=  {
+      title,
+      amount,
+      type,
+      date,
+      description,
+    }
     console.log("Submit from form income");
     try {
       const { data } = await createIncome(
@@ -49,6 +52,29 @@ const Form = ({ heading }) => {
     setDate("");
     setDescription("");
   };
+
+  if (isLoading) {
+    toast.info("Request Send ", {
+      position: toast.POSITION.TOP_RIGHT,
+      toastId: "loading1",
+      autoClose: 200
+    });
+  }
+
+  if (isError) {
+    toast.error("Something Went Wrong❌", {
+      position: toast.POSITION.TOP_RIGHT,
+      toastId: "error1",
+      autoClose: 2000
+    });
+  }
+  if (isSuccess) {
+    toast.success("Added 🚀", {
+      position: toast.POSITION.TOP_RIGHT,
+      toastId: "success1",
+      autoClose: 2000
+    });
+  }
   console.log("🚀 ~ file: Form.jsx:41 ~ Login ~ isLoading, isSuccess, isError, data, error:", isLoading, isSuccess, isError, data, error)
   return (
     <div className="form">
@@ -58,7 +84,7 @@ const Form = ({ heading }) => {
           <CardContent>
             <div className="inputs">
               <TextField
-                // required
+                required
                 id="filled-required"
                 label="salary-title"
                 variant="filled"
@@ -70,11 +96,11 @@ const Form = ({ heading }) => {
             </div>
             <div className="inputs">
               <TextField
-                // required
+                required
                 id="filled-required"
                 label="salary-amount"
                 variant="filled"
-                type="input"
+                type="number"
                 fullWidth="100%"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
@@ -82,7 +108,7 @@ const Form = ({ heading }) => {
             </div>
             <div className="inputs">
               <TextField
-                // required
+                required
                 id="filled-required"
                 variant="filled"
                 type="date"
@@ -108,7 +134,7 @@ const Form = ({ heading }) => {
             </div>
             <div className="inputs">
               <TextField
-                // required
+                required
                 id="filled-required"
                 label="description"
                 type="input"
@@ -128,7 +154,6 @@ const Form = ({ heading }) => {
               size="large"
               sx={{ borderRadius: "20px" }}
             >
-              {" "}
               <AddIcon /> Submit
             </Button>
           </CardActions>
