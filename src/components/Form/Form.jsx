@@ -5,7 +5,6 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  FormControl,
   InputLabel,
   MenuItem,
   Select,
@@ -31,7 +30,7 @@ const Form = ({ heading }) => {
     useCreateIncomeMutation();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const obj=  {
+    const obj = {
       title,
       amount,
       type,
@@ -42,7 +41,7 @@ const Form = ({ heading }) => {
     try {
       const { data } = await createIncome(
         obj
-        );
+      );
     } catch (error) {
       console.error("Failed to login:", error);
     }
