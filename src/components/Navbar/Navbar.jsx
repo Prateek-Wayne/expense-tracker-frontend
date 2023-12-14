@@ -20,6 +20,8 @@ import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import Jetha from "../../images/userJetha.jpeg";
+import { useSelector } from "react-redux";
+
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [cookie, setCookie] = useCookies(["token"]);
@@ -27,6 +29,9 @@ const NavBar = () => {
     console.log("Logout Called");
     setCookie("token", null);
   };
+  const userKaNAme = useSelector((state) => state.authSlice);
+// const token = useSelector((state) => state.auth.token);
+  console.log("🚀 ~ file: Navbar.jsx:33 ~ NavBar ~ userName:", userKaNAme)
 
   return (
     <div className="navbar">
@@ -100,7 +105,7 @@ const NavBar = () => {
             <ListItem>
               <div className="icons">
                 <Link to="/">
-                  <Avatar src={Jetha} alt="Jetha" style={{ margin: "auto" }} />
+                  <Avatar src={userKaNAme===null?Jetha:userKaNAme} style={{ margin: "auto" }} />
                 </Link>
                 <Link to="/">
                   <Button>

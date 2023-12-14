@@ -73,7 +73,7 @@ const Login = () => {
         toastId: "success1",
         autoClose: 2000
       });
-      dispatch(setToken({name:data?.userExist?.fullName,token:data?.token}));
+      dispatch(setToken({userName:data?.userExist?.fullName,token:data?.token}));
       navigate("/");
     }
   }, [isSuccess, data]);
