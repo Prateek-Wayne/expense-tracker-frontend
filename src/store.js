@@ -10,7 +10,7 @@ const store = configureStore({
     [loginAPI.reducerPath]: loginAPI.reducer,
     [registerAPI.reducerPath]: registerAPI.reducer,
     [incomeAPI.reducerPath]: incomeAPI.reducer,
-    [expenseAPI.reducerPath]:expenseAPI.reducer,
+    [expenseAPI.reducerPath]: expenseAPI.reducer,
     authSlice,
   },
   middleware: (getDefaultMiddleware) =>
