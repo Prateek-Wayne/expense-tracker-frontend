@@ -4,7 +4,7 @@ import Form from "../Form/Form";
 const Income = () => {
   return (
     <div>
-      <Form heading={"INCOME 💸"} />
+      <Form heading={"INCOME"} />
     </div>
   );
 };

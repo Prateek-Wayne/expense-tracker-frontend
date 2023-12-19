@@ -14,8 +14,10 @@ import AddIcon from "@mui/icons-material/Add";
 import "./Form.css";
 import { useCreateIncomeMutation } from "../../services/incomeAPI";
 import { useCookies } from "react-cookie";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import notitfactionToast from "./notification";
+import { useCreateExpenseMutation } from "../../services/expenseAPI";
 
 const Form = ({ heading }) => {
   const [cookie] = useCookies(["token"]);
@@ -28,6 +30,7 @@ const Form = ({ heading }) => {
   const [description, setDescription] = useState("");
   const [createIncome, { isLoading, isSuccess, isError, data, error }] =
     useCreateIncomeMutation();
+  const [createExpense,{ isLoading:isLoadingE, isSuccess:isSuccessE, isError:isErrorE, data:dataE, error:errorE }] = useCreateExpenseMutation();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const obj = {
@@ -36,12 +39,10 @@ const Form = ({ heading }) => {
       type,
       date,
       description,
-    }
+    };
     console.log("Submit from form income");
     try {
-      const { data } = await createIncome(
-        obj
-      );
+      heading==='INCOME'? await createIncome(obj): await createExpense(obj);
     } catch (error) {
       console.error("Failed to login:", error);
     }
@@ -51,35 +52,21 @@ const Form = ({ heading }) => {
     setDate("");
     setDescription("");
   };
+  heading==="INCOME"?notitfactionToast(isLoading, isError, isSuccess):notitfactionToast(isLoadingE,isErrorE,isSuccessE);
 
-  if (isLoading) {
-    toast.info("Request Send ", {
-      position: toast.POSITION.TOP_RIGHT,
-      toastId: "loading1",
-      autoClose: 200
-    });
-  }
-
-  if (isError) {
-    toast.error("Something Went Wrong❌", {
-      position: toast.POSITION.TOP_RIGHT,
-      toastId: "error1",
-      autoClose: 2000
-    });
-  }
-  if (isSuccess) {
-    toast.success("Added 🚀", {
-      position: toast.POSITION.TOP_RIGHT,
-      toastId: "success1",
-      autoClose: 2000
-    });
-  }
-  console.log("🚀 ~ file: Form.jsx:41 ~ Login ~ isLoading, isSuccess, isError, data, error:", isLoading, isSuccess, isError, data, error)
+  // console.log(
+  //   "🚀 ~ file: Form.jsx:41 ~ Login ~ isLoading, isSuccess, isError, data, error:",
+  //   isLoading,
+  //   isSuccess,
+  //   isError,
+  //   data,
+  //   error
+  // );
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
         <Card sx={{ backgroundColor: "rgba(195, 242, 253, 0.985)" }}>
-          <CardHeader title={heading} />
+          <CardHeader title={`${heading} 💸`} />
           <CardContent>
             <div className="inputs">
               <TextField
