@@ -9,7 +9,10 @@
     background-position: 0% 50%;
   }
 }
-
+*{
+  margin: 0px;
+  padding: 0px;
+}
 .main {
   align-items: center;
   background: radial-gradient(
@@ -20,6 +23,6 @@
   );
   background-size: 400% 400%;
   animation: gradient 8s ease-in infinite;
-  min-height: 96vh;
+  min-height: 100vh;
   max-height: 100%;
 }
