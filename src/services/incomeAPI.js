@@ -18,6 +18,13 @@ export const incomeAPI = createApi({
       query: () => "/getIncome",
       providesTags:["INCOME"],
     }),
+    deleteIncome: builder.mutation({
+      query: (id) => ({
+        url: `/deleteIncome/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['INCOME'],
+    }),
     createIncome: builder.mutation({
       query: (data) => ({
         url: "/createIncome",
@@ -32,4 +39,4 @@ export const incomeAPI = createApi({
     }),
   }),
 });
-export const { useCreateIncomeMutation ,useGetIncomesQuery } = incomeAPI;
+export const { useCreateIncomeMutation ,useGetIncomesQuery,useDeleteIncomeMutation } = incomeAPI;
