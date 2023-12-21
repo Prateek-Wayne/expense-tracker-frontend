@@ -7,38 +7,41 @@ import { useDeleteIncomeMutation } from "../../services/incomeAPI";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 const SingleIncome = ({ income }) => {
+  const date=new Date(income?.date).toLocaleDateString();
   const [deleteIncome, { isSuccess,isError, error, data }] = useDeleteIncomeMutation();
   const handleDelete=async ()=>{
     await deleteIncome(income?._id);
   }
   return (
     <Grid margin={1}>
-      <Card sx={{ backgroundColor: "rgba(195, 242, 253, 0.985)" }}>
-        <CardContent>
-          <div className="Main">
-            <div className="One">
-              <Chip label={income?.type} />
-              <Typography variant="h5" marginLeft={2}>
+     <Card style={{ backgroundColor: "rgba(195, 242, 253, 0.985)", borderRadius: '15px', padding: '10px' }}>
+    <CardContent>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+            <Chip label={income?.type} color="primary" />
+            <Typography variant="h5" style={{ marginLeft: '10px' }}>
                 {income?.title}
-              </Typography>
-            </div>
-            <div className="COntent">
-              <div className="Two">
-                <Button onClick={handleDelete}><DeleteOutlineOutlinedIcon/></Button>
-              </div>
-              <div className="Two">
-                <AttachMoneyIcon />
-                <Typography variant="body1" marginRight={2}>
-                  {income?.amount}
+            </Typography>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent:'space-between'}}>
+            <div style={{ display:'flex', alignItems:'center'}}>
+                <AttachMoneyIcon color="success"  />
+                <Typography variant="h6" style={{ marginRight:'10px',color:"gold" }}>
+                    {income?.amount}
                 </Typography>
-                <DateRangeOutlinedIcon />
-                <Typography variant="body1">{income.date}</Typography>
-              </div>
+                <DateRangeOutlinedIcon color="action"/>
+                <Typography variant="body1">{date}</Typography>
             </div>
-            <Typography>{income?.description}</Typography>
-          </div>
-        </CardContent>
-      </Card>
+            <Button onClick={handleDelete} variant="contained" color="secondary">
+              Delete
+              <DeleteOutlineOutlinedIcon/>
+            </Button> 
+        </div>
+        <Typography variant='subtitle2' color='textSecondary'>
+          {income?.description}
+        </Typography> 
+    </CardContent>
+</Card>
+
     </Grid>
   );
 };
