@@ -26,12 +26,12 @@ const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [cookie, setCookie] = useCookies(["token"]);
   const handleLogout = () => {
-    console.log("Logout Called");
+    // console.log("Logout Called");
     setCookie("token", null);
   };
   const userKaNAme = useSelector((state) => state.authSlice);
 // const token = useSelector((state) => state.auth.token);
-  console.log("🚀 ~ file: Navbar.jsx:33 ~ NavBar ~ userName:", userKaNAme)
+  // console.log("🚀 ~ file: Navbar.jsx:33 ~ NavBar ~ userName:", userKaNAme)
 
   return (
     <div className="navbar">

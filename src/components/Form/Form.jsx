@@ -40,7 +40,7 @@ const Form = ({ heading }) => {
       date,
       description,
     };
-    console.log("Submit from form income");
+    // console.log("Submit from form income");
     try {
       heading==='INCOME'? await createIncome(obj): await createExpense(obj);
     } catch (error) {

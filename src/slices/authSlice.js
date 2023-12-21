@@ -8,7 +8,7 @@ const authSlice=createSlice({
     },
     reducers:{
         setToken:(state,action)=>{
-            console.log("Inside the auth Slice",action.payload);
+            // console.log("Inside the auth Slice",action.payload);
             state.userName=action.payload.user;
             state.token=action.payload.token;
         }
