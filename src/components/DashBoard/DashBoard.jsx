@@ -105,7 +105,7 @@ const DashBoard = () => {
         {
           <>
             <Chip label='Recent Transaction' variant="filled" color="info"   />
-            {sortedData?.map((transaction, index) => {
+            {sortedData?.slice(0,10).map((transaction, index) => {
               return (
                 <Card
                   key={index}
