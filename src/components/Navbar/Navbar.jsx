@@ -105,21 +105,13 @@ const NavBar = () => {
             <ListItem>
               <div className="icons">
                 <Link to="/">
-                  <Avatar src={userKaNAme===null?Jetha:userKaNAme} style={{ margin: "auto" }} />
+                  <Avatar src={Jetha} style={{ margin: "auto" }} />
                 </Link>
                 <Link to="/">
                   <Button>
                     <InsertChartOutlinedIcon />
                     <Typography style={{ margin: "10px" }}>
                       Dashboard
-                    </Typography>
-                  </Button>
-                </Link>
-                <Link to="/transaction">
-                  <Button>
-                    <PriceChangeOutlinedIcon />
-                    <Typography style={{ margin: "10px" }}>
-                      Transactions
                     </Typography>
                   </Button>
                 </Link>

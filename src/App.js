@@ -27,10 +27,10 @@ const App = () => {
           path="/expense"
           element={cookie?.token ? <Expense /> : <Login />}
         />
-        <Route
+        {/* <Route
           path="/transaction"
           element={cookie?.token ? <Transaction /> : <Login />}
-        />
+        /> */}
         <Route path="/about" element={cookie?.token ? <About /> : <Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
