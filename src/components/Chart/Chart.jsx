@@ -36,7 +36,7 @@ const ChartData = () => {
       ],
     };
   }
-  return <div>{isSuccess && isSuccess2 && <Line data={data} height="100%" />}</div>;
+  return <div>{isSuccess && isSuccess2 && <Line data={data} height="100%"/>}</div>;
 };
 
 export default ChartData;

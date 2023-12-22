@@ -42,15 +42,15 @@ const DashBoard = () => {
     sortedData = [...incomes?.message, ...expenses?.message]?.sort(
       (a, b) => new Date(a?.date) - new Date(b?.date)
     );
-    maxIncome = [...incomes?.message].sort((a, b) => b?.amount - a?.amount)[0];
+    maxIncome = [...incomes?.message].sort((a, b) => b?.amount - a?.amount);
     maxExpense = [...expenses?.message].sort(
       (a, b) => b?.amount - a?.amount
-    )[0];
+    );
   }
 
   return (
     <Grid container>
-      <Grid xs={7} margin={1}>
+      <Grid xs={12} md={7} margin={1} sx={{display:'flex', flexDirection:'column', justifyContent:"center"}}>
         <Card sx={{ width: "100%" }}>
           <CardHeader title="DashBoard" />
           {(isLoadingIncome || isLoadingExpense) && (
@@ -62,8 +62,8 @@ const DashBoard = () => {
           )}
           {(isSuccess || isSuccess2) && <ChartData />}
         </Card>
-        <Grid container marginTop="10px">
-          <Grid xs={5} margin={2} marginLeft={5}>
+        <Grid container marginTop="10px" sx={{display:'flex', justifyContent:"center"}} >
+          <Grid xs={12} md={5} margin={1} >
             <Card
               sx={{
                 display: "flex",
@@ -75,7 +75,7 @@ const DashBoard = () => {
               <Typography variant="h6" color='rgb(89, 242, 91)'>Total Income : {totalIncome}</Typography>
             </Card>
           </Grid>
-          <Grid xs={5} margin={2}>
+          <Grid xs={12} md={5} margin={1} >
             <Card
               sx={{
                 display: "flex",
@@ -87,7 +87,7 @@ const DashBoard = () => {
               <Typography variant="h6" color='rgb(255, 71, 71)' >Total Expense : {totalExpense}</Typography>
             </Card>
           </Grid>
-          <Grid xs={10} marginLeft={7}>
+          <Grid xs={12} md={10} margin={1}>
             <Card
               sx={{
                 display: "flex",
@@ -101,11 +101,10 @@ const DashBoard = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid xs={4.5} margin={1}>
+      <Grid xs={12} md={4.5} margin={1}>
         {
           <>
             <Chip label='Recent Transaction' variant="filled" color="info"   />
-            {/* <Typography>Recent Transactions</Typography> */}
             {sortedData?.map((transaction, index) => {
               return (
                 <Card
@@ -118,31 +117,31 @@ const DashBoard = () => {
                     height: "30px",
                   }}
                 >
-                  <Typography variant="h5" color="grey" >{transaction?.title}</Typography>
+                  <Typography variant="h5" color={transaction?.content==='expense'?'rgb(89, 242, 91)':'rgb(255, 71, 71)'} >{transaction?.title}</Typography>
                   <Typography variant="h6" color='purple'>{transaction?.amount}</Typography>
                 </Card>
               );
             })}
           </>
         }
-        <Grid container sx={{ display: "flex", justifyContent: "center" }}>
-          <Grid xs={5.5} margin={1}>
+        {(isSuccess && isSuccess2) && <Grid container sx={{ display: "flex", justifyContent: "center" }}>
+          <Grid xs={12} md={5.5} margin={1}>
             <Card>
             <CardContent>
-                <Typography variant="h5" color="rgb(89, 242, 91)">Max Income :{maxIncome?.amount}</Typography>
-                <Typography variant="h5" color="rgb(89, 242, 91)">Min  Income :{maxIncome?.amount}</Typography>
+                <Typography variant="h5" color="rgb(89, 242, 91)">Max Income :{maxIncome[0]?.amount}</Typography>
+                <Typography variant="h5" color="rgb(89, 242, 91)">Min  Income :{maxIncome[maxIncome?.length-1]?.amount}</Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid xs={5.5} margin={1}>
+          <Grid xs={12} md={5.5} margin={1}>
             <Card>
             <CardContent>
-                <Typography variant="h5" color="rgb(255, 71, 71)">Max Expense : {maxExpense?.amount}</Typography>
-                <Typography variant="h5" color="rgb(255, 71, 71)">Min Expense : {maxExpense?.amount}</Typography>
+                <Typography variant="h5" color="rgb(255, 71, 71)">Max Expense : {maxExpense[0]?.amount}</Typography>
+                <Typography variant="h5" color="rgb(255, 71, 71)">Min Expense : {maxExpense[maxExpense?.length-1]?.amount}</Typography>
               </CardContent>
             </Card>
           </Grid>
-        </Grid>
+        </Grid>}
       </Grid>
     </Grid>
   );
