@@ -2,19 +2,12 @@ import React from "react";
 import Form from "../Form/Form";
 import SingleIncome from "./SingleIncome";
 import { useGetIncomesQuery } from "../../services/incomeAPI";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box,Chip } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 
 const Income = () => {
   const { isLoading, isError, isSuccess, data, error } = useGetIncomesQuery();
-  // console.log(
-  //   "Data from get Incomes :",
-  //   isLoading,
-  //   isError,
-  //   isSuccess,
-  //   data,
-  //   error
-  // );
+  let totalAmount = data?.message?.reduce((total, item) => total + item.amount, 0);
 
   return (
     <Grid container spacing={1}>
@@ -29,10 +22,14 @@ const Income = () => {
             <LinearProgress color="inherit" />
           </Box>
         )}
-        {isSuccess &&
-          data?.message?.map((income, index) => {
-            return <SingleIncome key={index} income={income} />;
-          })}
+        {isSuccess && (
+          <>
+            <Chip label={totalAmount} color="secondary" />
+            {data?.message?.map((income, index) => {
+              return <SingleIncome key={index} income={income} />;
+            })}
+          </>
+        )}
       </Grid>
     </Grid>
   );

@@ -14,6 +14,17 @@ export const expenseAPI = createApi({
   }),
   tagTypes: ["EXPENSE"],
   endpoints: (builder) => ({
+    getExpense: builder.query({
+      query: () => "/getExpense",
+      providesTags: ["EXPENSE"],
+    }),
+    deleteExpense: builder.mutation({
+      query: (id) => ({
+        url: `/deleteExpense/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["EXPENSE"],
+    }),
     createExpense: builder.mutation({
       query: (data) => ({
         url: "/createExpense",
@@ -28,4 +39,4 @@ export const expenseAPI = createApi({
     }),
   }),
 });
-export const { useCreateExpenseMutation } = expenseAPI;
+export const { useCreateExpenseMutation,useGetExpenseQuery,useDeleteExpenseMutation } = expenseAPI;

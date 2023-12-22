@@ -1,0 +1,22 @@
+.Main{
+    display: flex;
+    flex-direction: column;
+    margin: 1px;
+}
+.Content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.One{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2px;
+}
+.Two{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 1px;
+}

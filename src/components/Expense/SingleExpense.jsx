@@ -1,4 +1,9 @@
 import React from "react";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import { useDeleteExpenseMutation } from "../../services/expenseAPI";
+import "./SingleExpense.css";
 import {
   Card,
   CardContent,
@@ -7,19 +12,14 @@ import {
   Chip,
   Button,
 } from "@mui/material";
-import "./SingleIncome.css";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
-import { useDeleteIncomeMutation } from "../../services/incomeAPI";
-import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 
-const SingleIncome = ({ income }) => {
-  const date = new Date(income?.date).toLocaleDateString();
-  const [deleteIncome, { isSuccess, isError, error, data }] =
-    useDeleteIncomeMutation();
+const SingleExpense = ({ expense }) => {
+  const date = new Date(expense?.date).toLocaleDateString();
+  const [deleteExpense, { isSuccess, isError, error, data }] =
+    useDeleteExpenseMutation();
   const handleDelete = async () => {
-    await deleteIncome(income?._id);
+    await deleteExpense(expense?._id);
   };
   return (
     <Grid margin={1}>
@@ -38,9 +38,9 @@ const SingleIncome = ({ income }) => {
               marginBottom: "10px",
             }}
           >
-            <Chip label={income?.type} color="primary" />
+            <Chip label={expense?.type} color="primary" />
             <Typography variant="h5" style={{ marginLeft: "10px" }}>
-              {income?.title}
+              {expense?.title}
             </Typography>
           </div>
           <div
@@ -56,7 +56,7 @@ const SingleIncome = ({ income }) => {
                 variant="h6"
                 style={{ marginRight: "10px", color: "gold" }}
               >
-                {income?.amount}
+                {expense?.amount}
               </Typography>
               <DateRangeOutlinedIcon color="action" />
               <Typography variant="body1">{date}</Typography>
@@ -73,7 +73,7 @@ const SingleIncome = ({ income }) => {
           <div style={{display:"flex"}}>
           <MessageOutlinedIcon/>
           <Typography variant="subtitle2" color="textSecondary">
-            {income?.description}
+            {expense?.description}
           </Typography>
           </div>
         </CardContent>
@@ -82,4 +82,4 @@ const SingleIncome = ({ income }) => {
   );
 };
 
-export default SingleIncome;
+export default SingleExpense;
