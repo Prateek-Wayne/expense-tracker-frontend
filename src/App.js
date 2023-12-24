@@ -11,6 +11,7 @@ import Transaction from "./components/Transactions/Transaction";
 import About from "./components/About/About";
 import "./App.css";
 
+
 const App = () => {
   const [cookie] = useCookies(["token"]);
 

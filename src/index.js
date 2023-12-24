@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Analytics } from '@vercel/analytics/react';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,6 +15,7 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <ToastContainer limit={2} />
+      <Analytics />
       <App />
     </BrowserRouter>
   </Provider>,
