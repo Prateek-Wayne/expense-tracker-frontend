@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# 💸 Expense Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Expense Tracker is a web application built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to manage and track their expenses.
 
-In the project directory, you can run:
+## 🚀 Live Demo
 
-### `npm start`
+You can check out the live demo of the project at the following URLs:
+- Frontend: https://expense-tracker-frontend-omega.vercel.app/
+- Backend: https://expense-tracker-api-k3sr.onrender.com
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+- **Frontend**: React.js
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🎁 Features
 
-### `npm run build`
+- Add, update, and delete expenses.
+- View a summary of expenses.
+- (Add more features here...)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📸 Screenshots
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<div style={{ display:"flex" }} >
 
-### `npm run eject`
+<img width="500" height="300"  alt="056D3E80-F8B2-4A13-886B-FEE3E56375A2" src="https://github.com/Prateek-Wayne/expense-tracker-frontend/assets/114328592/31117361-462a-4661-9a5d-96ce2ee3cfa9">
+<img width="500" height="300"  alt="056D3E80-F8B2-4A13-886B-FEE3E56375A2" src="https://github.com/Prateek-Wayne/expense-tracker-frontend/assets/114328592/d4aed425-2ebe-4c37-b600-56c23e3d690e">
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+</div>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<div style={{ display:"flex" }} >
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<img width="500" height="300"  src="https://github.com/Prateek-Wayne/expense-tracker-frontend/assets/114328592/b326e100-08e9-4be1-b38a-6d1ba0adacb8">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<img width="500" height="300"  src="https://github.com/Prateek-Wayne/expense-tracker-frontend/assets/114328592/5a6c05bc-c8a7-4869-9286-e24e362590d1">
 
-## Learn More
+</div>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🏁 Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To get a local copy up and running, follow these steps:
 
-### Code Splitting
+1. Clone the repository: `git clone https://github.com/Prateek-Wayne/expense-tracker-frontend.git`
+2. Install dependencies: `npm install`
+3. Start the server: `npm start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## C🤝 Contributing
 
-### Analyzing the Bundle Size
+Contributions are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📜 License
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
